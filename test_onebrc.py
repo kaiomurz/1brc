@@ -1,5 +1,5 @@
 from hamcrest import assert_that, equal_to
-from onebrc import get_city_results, create_cities_dict
+from onebrc import get_city_results, create_cities_dict, get_results_list
 
 
 def test_get_city_results():
@@ -26,5 +26,21 @@ def test_create_cities_dict():
         "London": [20.5],
     }
 
-    returned_cities_dict = create_cities_dict(cities=cities) 
+    returned_cities_dict = create_cities_dict(cities=cities)
     assert_that(returned_cities_dict, equal_to(expected_cities_dict))
+
+
+def test_get_results_list():
+    cities_dict = {
+        "Mumbai": [20.0, 30.0, 40.0, 50.0],
+        "Oman": [30.5, 40.5],
+        "London": [20.5],
+    }
+    expected_results_list = [
+        "Mumbai;20.0;35.0;50.0",
+        "Oman;30.5;35.5;40.5",
+        "London;20.5;20.5;20.5",
+    ]
+    returned_results_list = get_results_list(cities_dict=cities_dict)
+
+    assert_that(returned_results_list, equal_to(expected_results_list))

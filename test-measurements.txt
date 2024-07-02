@@ -3,8 +3,8 @@ Singapore;31.7
 Pyongyang;-1.5
 Portland (OR);9.7
 Madrid;17.4
-Ürümqi;-7.8
-Vienna;39.0
+Ürümqi;-8.8
+Vienna;49.0
 Asmara;33.7
 Palembang;21.4
 Toronto;21.7
@@ -13,10 +13,10 @@ Pyongyang;-1.5
 Portland (OR);9.7
 Ürümqi;-7.8
 Honolulu;23.4
-Asmara;33.7
+Asmara;30.7
 Palembang;21.4
 Toronto;21.7
-Singapore;31.7
+Singapore;21.7
 Pyongyang;-1.5
 Portland (OR);9.7
 Ürümqi;-7.8

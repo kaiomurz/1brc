@@ -86,7 +86,7 @@ def _process_file_chunk(
                     measurement,
                     1,
                 ]  # min, max, sum, count
-        
+
         gc_enable()
     return result
 
