@@ -1,5 +1,7 @@
 # time python3 calculateAverage.py
 import os
+import sys
+import time
 from gc import disable as gc_disable, enable as gc_enable
 import multiprocessing as mp
 
@@ -119,15 +121,24 @@ def process_file(
                 _result[3] += measurements[3]
 
     # Print final results
-    print("{", end="")
-    for location, measurements in sorted(result.items()):
-        print(
-            f"{location.decode('utf8')}={measurements[0]:.1f}/{(measurements[2] / measurements[3]) if measurements[3] != 0 else 0:.1f}/{measurements[1]:.1f}",
-            end=", ",
-        )
-    print("\b\b} ")
+    # print("{", end="")
+    # for location, measurements in sorted(result.items()):
+    #     print(
+    #         f"{location.decode('utf8')}={measurements[0]:.1f}/{(measurements[2] / measurements[3]) if measurements[3] != 0 else 0:.1f}/{measurements[1]:.1f}",
+    #         end=", ",
+    #     )
+    # print("\b\b} ")
 
+def get_measurements_path(size:str)->str:
+    size_dir = {'3':'thousand', '6':'million', '9':'billion', 't':'test-measurements'}
+    file_path = os.path.join(os.getcwd(), 'measurements')
+    file_name = f"{size_dir[size]}.txt" if size in size_dir   else "test-measurements.txt" 
+    return f"{file_path}/{file_name}"
 
 if __name__ == "__main__":
-    cpu_count, *start_end = get_file_chunks("measurements.txt")
+    start_time = time.time()
+    measurements_path = get_measurements_path(sys.argv[1])
+
+    cpu_count, *start_end = get_file_chunks(measurements_path)
     process_file(cpu_count, start_end[0])
+    print(f"time taken:{time.time()-start_time:.2f}")
